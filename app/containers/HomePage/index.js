@@ -12,13 +12,36 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import SearchBar from 'components/SearchBar';
+import StarRating from 'components/Star';
+import { Button, Paper } from 'material-ui';
+
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+   constructor() {
+    super();
+
+    this.state = {
+      rating: 1,
+    };
+  }
+  
+  onStarClick(nextValue, prevValue, name) {
+    console.log('name: %s, nextValue: %s, prevValue: %s', name, nextValue, prevValue);
+    this.setState({rating: nextValue});
+  }
+
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <Paper>
+          <h1>
+            <FormattedMessage {...messages.header} />
+          </h1>
+
+          <Button>Test</Button>
+        </Paper>
+      </div>
     );
   }
 }
